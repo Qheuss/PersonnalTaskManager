@@ -1,4 +1,4 @@
-# personnal-task-manager
+# My Task Manager - Terminal
 ```zsh
 "Welcome to your task manager, Press:
 1. to see all your tasks
