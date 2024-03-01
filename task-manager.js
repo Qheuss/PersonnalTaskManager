@@ -56,8 +56,8 @@ Your choice: `,
 }
 
 function seeTasks() {
+  console.clear();
   if (taskList != "") {
-    console.clear();
     console.log(`Task List:\n${taskList.join("")}\n`);
     rl.question(
       `Press ENTER to go back to the Task Manager: `,
@@ -72,7 +72,6 @@ function seeTasks() {
       }
     );
   } else {
-    console.clear();
     console.log("You still haven't defined any task\n");
     rl.question(
       `Press ENTER to go back to the Task Manager: `,
@@ -129,15 +128,18 @@ function rmTask() {
 function markTask() {
   console.clear();
   rl.question(`Which task have you finished?`, function (answer) {
-    if (taskList[answer - 1].includes("✅")) {
+    if (isNaN(answer)) {
+      markTask();
+      console.log("\nError misspelled, retry or press ENTER to exit:");
+    } else if (answer == "") {
+      taskManager();
+    } else if (taskList[answer - 1].includes("✅")) {
       taskList[answer - 1] = taskList[answer - 1].replace(" ✅", "");
       saveTasksToFile();
       taskManager();
     } else if (taskList[answer - 1].includes("✅") == false) {
       taskList[answer - 1] = taskList[answer - 1] + " ✅";
       saveTasksToFile();
-      taskManager();
-    } else if (answer == "") {
       taskManager();
     } else {
       markTask();
