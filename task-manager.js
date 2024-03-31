@@ -60,7 +60,7 @@ function seeTasks() {
   if (taskList != "") {
     console.log(`Task List:\n${taskList.join("")}\n`);
     rl.question(
-      `Press ENTER to go back to the Task Manager: `,
+      "Press ENTER to go back to the Task Manager: ",
       function (answer) {
         if (answer == "") {
           console.clear();
@@ -74,7 +74,7 @@ function seeTasks() {
   } else {
     console.log("You still haven't defined any task\n");
     rl.question(
-      `Press ENTER to go back to the Task Manager: `,
+      "Press ENTER to go back to the Task Manager: ",
       function (answer) {
         if (answer == "") {
           console.clear();
@@ -90,7 +90,7 @@ function seeTasks() {
 
 function addTask() {
   console.clear();
-  rl.question(`Write here the task you want to add: `, function (answer) {
+  rl.question("Write here the task you want to add: ", function (answer) {
     if (answer != "") {
       taskList.push("\n* " + answer);
       saveTasksToFile();
@@ -108,7 +108,7 @@ function addTask() {
 function rmTask() {
   console.clear();
   rl.question(
-    `Write here the number task you want to remove:`,
+    "Write here the number task you want to remove:",
     function (answer) {
       if (isNaN(answer)) {
         rmTask();
@@ -127,7 +127,7 @@ function rmTask() {
 
 function markTask() {
   console.clear();
-  rl.question(`Which task have you finished?`, function (answer) {
+  rl.question("Which task have you finished?", function (answer) {
     if (isNaN(answer)) {
       markTask();
       console.log("\nError misspelled, retry or press ENTER to exit:");
